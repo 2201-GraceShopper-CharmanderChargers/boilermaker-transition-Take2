@@ -8,7 +8,7 @@ module.exports = {
     filename: './public/bundle.js'
   },
   resolve: {
-    extensions: ['.js', '.jsx']
+    extensions: ['.js', '.jsx', '.css']
   },
   devtool: 'source-map',
   watchOptions: {
@@ -22,8 +22,8 @@ module.exports = {
         loader: 'babel-loader'
       },
       {
-        test: /\.(sass|less|css)$/,
-        use: ['style-loader', 'css-loader', 'sass-loader']
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader']
       }
     ]
   }

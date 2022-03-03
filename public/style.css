@@ -36,7 +36,6 @@ body {
   padding: 0;
   margin: 0;
   width: 100vw;
-  background-image: url('https://pbs.twimg.com/media/DmFbEO7W0AIci5f?format=jpg&name=large');
 }
 
 nav {
@@ -114,17 +113,16 @@ main {
 .carouselslide {
   width: 200px;
   height: 600px;
-
   margin: auto;
 }
-.carosuelImage {
-  background-color: bl;
-}
+/* .carosuelImage {
+  background-color: black;
+} */
 
 .carosuelImage > img {
-  margin-bottom: 10%;
+  margin: 10px;
   width: 50%;
-  margin-left: 45%;
+  margin-left: 25%;
   border-radius: 55px 55px 55px 55px;
   box-shadow: 10px 10px 5px;
   border: 2px;

@@ -1,23 +1,23 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
-import CarouselSlide from './Carousel'
-import {fetchPizzas} from '../store/pizzas'
 
-import {Link} from 'react-router-dom'
-
+/**
+ * COMPONENT
+ */
 export const UserHome = props => {
   const {email} = props
+
   return (
     <div>
-      <div>
-        <h3>Welcome, {email}</h3>
-      </div>
-      <CarouselSlide />
+      <h3>Welcome, {email}</h3>
     </div>
   )
 }
 
+/**
+ * CONTAINER
+ */
 const mapState = state => {
   return {
     email: state.user.email
@@ -26,6 +26,9 @@ const mapState = state => {
 
 export default connect(mapState)(UserHome)
 
+/**
+ * PROP TYPES
+ */
 UserHome.propTypes = {
   email: PropTypes.string
 }
