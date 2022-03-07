@@ -19,8 +19,8 @@ import {
   HomePage,
   Checkout,
   CheckoutSuccess,
-  AdminPage
-  // notFoundpage
+  AdminPage,
+  AdminAllPizzas
 } from './components'
 import {me} from './store'
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -31,30 +31,40 @@ class Routes extends Component {
   }
 
   render() {
-    const {isLoggedIn} = this.props
+    const {isLoggedIn, isAdmin} = this.props
     return (
       <div>
         {isLoggedIn ? (
+          isAdmin ? (
+            <Switch>
+              <Route exact path="/" component={AdminPage} />
+              <Route exact path="/adminHome" component={AdminPage} />
+              <Route exact path="/adminPizzas" component={AdminAllPizzas} />
+              <Redirect to="/adminHome" />
+            </Switch>
+          ) : (
           <Switch>
+            <Route exact path="/" component={UserHome} />
             <Route exact path="/userhome" component={UserHome} />
+            <Route exact path="/pizzas" component={AllPizzas} />
             <Route exact path="/cart" component={Cart} />
             <Route exact path="/checkout" component={Checkout} />
             <Route exact path="/checkoutsuccess" component={CheckoutSuccess} />
-            <Route exact path="/pizzas" component={AllPizzas} />
-            <Route exact path="/:id" component={SinglePizza} />
+            <Route exact path="/:pizzaId" component={SinglePizza} />
+           
             {/* <Route exact path="/*" component={notFoundpage} /> */}
             <Redirect to="/userhome" />
           </Switch>
-        ) : (
+        )) : (
           <Switch>
+            <Route exact path ='/' component={HomePage} />
             <Route exact path="/home" component={HomePage} />
+            <Route exact path="/pizzas" component={AllPizzas} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/signup" component={Signup} />
-            <Route exact path="/pizzas" component={AllPizzas} />
-            <Route exact path="/:id" component={SinglePizza} />
+            <Route exact path="/:pizzaId" component={SinglePizza} />
             {/* <Route path="/*" component={notFoundpage} /> */}
             <Redirect to='/home' />
-
           </Switch>
         )}
       </div>
@@ -77,7 +87,8 @@ class Routes extends Component {
 
 const mapState = state => {
   return {
-    isLoggedIn: !!state.user.id
+    isLoggedIn: !!state.user.id,
+    isAdmin: state.user.isAdmin,
   }
 }
 

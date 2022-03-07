@@ -9,7 +9,7 @@ const setPizza = pizza => {
   }
 }
 
-export const fetchPizza = id => {
+export const fetchPizza = (id) => {
   return async dispatch => {
     try {
       const {data: pizza} = await axios.get(`/api/pizzas/${id}`)
@@ -20,7 +20,7 @@ export const fetchPizza = id => {
   }
 }
 
-export default function pizzaReducer(state = {}, action) {
+export default function pizzaReducer(state = null, action) {
   switch (action.type) {
     case SET_PIZZA: {
       return action.pizza

@@ -1,33 +1,21 @@
 import React, {useState} from 'react'
 import {connect} from 'react-redux'
 import { fetchAllUsers } from '../../store/users'
+import { deletePizza } from '../../store/pizzas'
+import AdminAllPizzas from './AdminAllPizzas'
 
 
 
 class AdminPage extends React.Component {
- 
 
   render() {
-   
-    
     return (
       <div>
-        hello
+        <AdminAllPizzas />
       </div>
     )
   }
 }
 
-const mapState = state => {
-  return {
-    users: state.users
-  }
-}
 
-const mapDispatch = dispatch => {
-  return {
-    fetchAllUsers: () => dispatch(fetchAllUsers())
-  }
-}
-
-export default connect(mapState, mapDispatch)(AdminPage)
+export default AdminPage

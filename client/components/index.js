@@ -15,9 +15,10 @@ import HomePage from './HomePage'
 import CheckoutSuccess from './CheckoutSuccess'
 import Checkout from './Checkout'
 import AdminPage from './Admin/AdminPage'
+import AdminAllPizzas from './Admin/AdminAllPizzas'
 
 
 // import LoginForm from './LoginForm';
 // import SignUpForm from './SignUpForm';
 
-export {Login, Signup, AllPizzas, SinglePizza, Cart, HomePage, Checkout, CheckoutSuccess, AdminPage}
+export {Login, Signup, AllPizzas, SinglePizza, Cart, HomePage, Checkout, CheckoutSuccess, AdminPage, AdminAllPizzas}
