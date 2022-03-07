@@ -14,7 +14,7 @@ import Cart from './Cart'
 import HomePage from './HomePage'
 import CheckoutSuccess from './CheckoutSuccess'
 import Checkout from './Checkout'
-import AdminPage from './AdminPage'
+import AdminPage from './Admin/AdminPage'
 
 
 // import LoginForm from './LoginForm';

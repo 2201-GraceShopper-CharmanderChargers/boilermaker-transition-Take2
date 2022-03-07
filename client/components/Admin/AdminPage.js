@@ -1,16 +1,14 @@
 import React, {useState} from 'react'
 import {connect} from 'react-redux'
-import { fetchAllUsers } from '../store/users'
+import { fetchAllUsers } from '../../store/users'
 
 
 
 class AdminPage extends React.Component {
-  componentDidMount() {
-    this.props.fetchAllUsers()
-  }
+ 
 
   render() {
-    const users = this.props.users
+   
     
     return (
       <div>
