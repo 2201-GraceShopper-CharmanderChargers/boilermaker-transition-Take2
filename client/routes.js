@@ -20,7 +20,8 @@ import {
   Checkout,
   CheckoutSuccess,
   AdminPage,
-  AdminAllPizzas
+  AdminAllPizzas,
+  notFoundPage
 } from './components'
 import {me} from './store'
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -51,8 +52,7 @@ class Routes extends Component {
             <Route exact path="/checkout" component={Checkout} />
             <Route exact path="/checkoutsuccess" component={CheckoutSuccess} />
             <Route exact path="/:pizzaId" component={SinglePizza} />
-           
-            {/* <Route exact path="/*" component={notFoundpage} /> */}
+            <Route exact path="/*" component={notFoundPage} />
             <Redirect to="/userhome" />
           </Switch>
         )) : (
@@ -63,7 +63,7 @@ class Routes extends Component {
             <Route exact path="/login" component={Login} />
             <Route exact path="/signup" component={Signup} />
             <Route exact path="/:pizzaId" component={SinglePizza} />
-            {/* <Route path="/*" component={notFoundpage} /> */}
+            <Route path="/*" component={notFoundPage} />
             <Redirect to='/home' />
           </Switch>
         )}
