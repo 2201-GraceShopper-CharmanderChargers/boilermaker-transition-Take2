@@ -1,23 +1,39 @@
-const Router = require('express').Router()
+const pizzaRouter = require('express').Router()
 const Pizza = require('../db/models/pizza')
 const Order = require('../db/models/order')
 
-Router.get('/', async (req, res, next) => {
+pizzaRouter.get('/', async (req, res, next) => {
   try {
+    
     const allPizzas = await Pizza.findAll()
     res.send(allPizzas)
   } catch (error) {
-    next(error)
+    console.error(error)
   }
 })
 
-Router.get('/:id', async (req, res, next) => {
+pizzaRouter.get('/:pizzaId', async (req, res, next) => {
   try {
-    const pizza = await Pizza.findByPk(req.params.id)
-    res.send(pizza)
+    const pizza = await Pizza.findOne({
+      where: {
+        id: req.params.pizzaId
+      }
+    })
+    res.json(pizza)
   } catch (error) {
-    next(error)
+    console.error(error)
   }
 })
 
-module.exports = Router
+pizzaRouter.delete('/:pizzaId', async (req, res, next) => {
+  try {
+    const pizza = await Pizza.findByPk(req.params.pizzaId);
+    await pizza.destroy();
+    res.json(pizza);
+  } catch (error) {
+    console.error('this pizza wont die', error);
+  }
+});
+
+
+module.exports = pizzaRouter

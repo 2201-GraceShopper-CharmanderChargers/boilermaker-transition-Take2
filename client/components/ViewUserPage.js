@@ -7,7 +7,7 @@ import EditUserPage from './EditUserPage'
 import OrderHistory from './OrderHistory'
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
-import AdminPage from './AdminPage'
+import AdminPage from './Admin/AdminPage'
 import {getCart} from '../store/cart'
 import axios from 'axios'
 
@@ -17,7 +17,8 @@ export const UserHome = props => {
   const { email, isAdmin } = props
   const dispatch = useDispatch();
   const [openEdit, setOpenEdit] = useState(false)
-  console.log('admin test', props)
+  
+
   useEffect(() => {
     async function loadCart() {
       try {
@@ -29,6 +30,7 @@ export const UserHome = props => {
     }
     loadCart();
   }, [])
+
   return ( isAdmin ? (
     <AdminPage />
   ) : (

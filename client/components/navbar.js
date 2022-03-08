@@ -12,10 +12,27 @@ import LoginIcon from '@mui/icons-material/Login';
 import AirplaneTicketIcon from '@mui/icons-material/AirplaneTicket';
 import PointOfSaleIcon from '@mui/icons-material/PointOfSale';
 
-const Navbar = ({handleClick, isLoggedIn, cartSize}) => (
+const Navbar = ({handleClick, isLoggedIn, cartSize, isAdmin}) => (
+  
   <div id="nav">
     <nav>
-      {isLoggedIn ? (
+      {isLoggedIn  ? (
+        isAdmin ? (
+         <div>
+           <Link className="navLink" to="/adminHome">
+            <HomeIcon />
+            Home
+          </Link>
+          <Link className="navLink" to="/adminPizzas">
+            <LocalPizzaIcon />
+            Pizzas
+          </Link>
+           <a href="#" onClick={handleClick}>
+            <LogoutIcon />
+            Logout
+          </a>
+         </div>
+        ) : (
         <div>
           <Link className="navLink" to="/userhome">
             <HomeIcon />
@@ -25,10 +42,6 @@ const Navbar = ({handleClick, isLoggedIn, cartSize}) => (
             <LocalPizzaIcon />
             Pizzas
           </Link>
-          {/* <Link className="navLink" to="/checkout">
-            <PointOfSaleIcon />
-            testCheckOut
-          </Link> */}
           <Link className="navLink" to="/cart">
             <Badge badgeContent={cartSize} color="success" >
               <ShoppingCartIcon color="primary" />
@@ -40,7 +53,7 @@ const Navbar = ({handleClick, isLoggedIn, cartSize}) => (
             Logout
           </a>
         </div>
-      ) : (
+      )) : (
         <div>
           {/* The navbar will show these links before you log in */}
           <Link className="navLink" to="/home">
@@ -68,7 +81,8 @@ const Navbar = ({handleClick, isLoggedIn, cartSize}) => (
 const mapState = state => {
   return {
     isLoggedIn: !!state.user.id,
-    cartSize: state.cart.length
+    cartSize: state.cart.length,
+    isAdmin: state.user.isAdmin,
   }
 }
 

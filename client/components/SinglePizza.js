@@ -39,7 +39,7 @@ class SinglePizza extends React.Component {
 
   componentDidMount() {
     this.loading = false
-    this.props.fetchPizza(this.props.match.params.id)
+    this.props.fetchPizza(this.props.match.params.pizzaId)
   }
 
   componentDidUpdate(prevProps) {
@@ -56,9 +56,9 @@ class SinglePizza extends React.Component {
 
   render() {
     const pizza = this.props.pizza
+   
     return this.loading ? (
       <div>
-        <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/004.png" />
         <form className="single-pizza" onSubmit={this.handleSubmit}>
           <div className="container">
             <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/004.png" />
@@ -101,7 +101,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchPizza: id => dispatch(fetchPizza(id)),
+    fetchPizza: (id) => dispatch(fetchPizza(id)),
     addCart: pizza => dispatch(addCart(pizza))
   }
 }

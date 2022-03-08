@@ -2,10 +2,26 @@ import React, {useState, useEffect } from 'react'
 import Carousel from 'react-bootstrap/Carousel'
 import { useDispatch, useSelector} from 'react-redux'
 import { Link, useHistory } from 'react-router-dom'
+import axios from 'axios'
 
 
-const CarouselSlide = props => {
-  const {pizzas} = props
+const CarouselSlide = () => {
+  const [pizzas, setPizzas] = useState([])
+  useEffect(() => {
+    async function getPizzas() {
+      try {
+        const res = await axios.get('/api/pizzas')
+        const info = res.data
+        setPizzas(info)
+      } catch (error) {
+        console.log('there was a problem')
+      }
+    }
+    getPizzas()
+  }, [])
+
+
+  // const {pizzas} = props
    const history = useHistory()
   return (
     <div className="carousel">

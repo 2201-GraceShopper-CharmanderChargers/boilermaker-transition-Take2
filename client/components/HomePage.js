@@ -2,24 +2,21 @@ import React from 'react'
 import CarouselSlide from './Carousel'
 import {Link } from 'react-router-dom'
 import {connect} from 'react-redux'
-import {fetchPizzas} from '../store/pizzas'
+
 
 class HomePage extends React.Component {
   constructor(props) {
     super(props)
-
     this.loading = true
   }
   componentDidMount() {
     this.loading = false
-    this.props.fetchPizzas()
   }
 render(){
-  const pizzas = this.props.pizzas
   return (
     <div>
       <div>
-       <CarouselSlide pizzas={pizzas} />
+       <CarouselSlide />
       <div className="hometext">
         <h3 className="homeheader">Pizza is not just food</h3>
         <h5>
@@ -33,9 +30,7 @@ render(){
       </div>
         <div className="icon">
           <Link to="/pizzas" >
-
           <div className="pizza-container">
-
             <div className="pizza" id="hvr-sink">
               <div className="basil">
                 <div className="leaf"></div>
@@ -52,7 +47,6 @@ render(){
             </div>
 
           </div>
-
           </Link>
         </div>
         </div>
@@ -61,19 +55,8 @@ render(){
   )
   }
 }
-const mapState = state => {
-  return {
-    pizzas: state.pizzas,
-  }
-}
 
-const mapDispatch = dispatch => {
-  return {
-    fetchPizzas: () => dispatch(fetchPizzas()),
-  }
-}
-
-export default connect(mapState, mapDispatch)(HomePage)
+export default HomePage 
 
 
 
